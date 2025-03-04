@@ -5,13 +5,5 @@ if [ $# -eq 0 ]
   else
     tag=$1
 fi
-if [ $tag != 'latest' ]
-then
-  echo 'Build from from tag'
-  docker build -f src/docker/${tag}/Dockerfile -t jkaninda/laravel-php-fpm:$tag .
-else
- echo 'Build latest'
- docker build -f src/docker/8.3/Dockerfile -t jkaninda/laravel-php-fpm:$tag .
- 
-fi
-
+echo 'Building Laravel PHP-FPM Image'
+docker build -f src/docker/Dockerfile -t drukhost/laravel-php-fpm:$tag PHP_VERSION=$tag.
